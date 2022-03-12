@@ -176,12 +176,12 @@ article {
   display:inline-block;
   border-radius:50%;
   border:solid 2px rgb(var(--main-color-rgb));
-  background-image:url('https://res.cloudinary.com/ginahenderson/image/upload/v1647034686/user-img_xu9obf.png');
+  background-image:url('user-img.png');
   background-size:cover;
   background-color:rgb(var(--main-color-rgb));
 }
 .comment-reply .profile-pic {
-  background-image:url('https://res.cloudinary.com/ginahenderson/image/upload/v1647034686/user-img_xu9obf.png');
+  background-image:url('user-img.png');
 }
 .commenter-name {
   font-size:1.2rem;

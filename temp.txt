@@ -2,3 +2,8 @@
 // replying to pops up
 // comment is appended to parent comment
 // 
+
+TO DO
+// Add like/dislike functionality
+// Add tags and share buttons
+// Style random photo placeholder

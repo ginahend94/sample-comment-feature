@@ -9,18 +9,21 @@ const updatePreview = () => iconPreview.style.backgroundColor = iconColor.value;
 
 iconColor.addEventListener('input', updatePreview);
 
+let isReply;
+
 form.addEventListener('submit', e => {
   e.preventDefault();
+  let parent = isReply ? replyToComment() : 
   addComment();
 })
 
-const addComment = () => {
-  newComment();
+const addComment = parent => {
+  parent.appendChild(newComment());
   commentInput.value = '';
 }
 
-let isReply;
 let replyingTo;
+
 const newComment = () => {
   const commentContainer = document.createElement('div');
   const commentData = commentContainer.dataset;
@@ -140,16 +143,6 @@ const newComment = () => {
 const replyingMessage = document.querySelector('.replying-message');
 const cancelReplyButton = replyingMessage.querySelector('.cancel-reply'); 
 
-cancelReplyButton.addEventListener('click', e => {
-  e.preventDefault();
-  cancelReply(e);
-})
-
-const cancelReply = e => {
-  e.preventDefault();
-  console.log('NOT submitted!');
-}
-
 const replyToComment = e => {
   let parentComment = e.target.parentNode.parentNode.parentNode.parentNode;
   const parentUser = parentComment.dataset.commenter;
@@ -158,6 +151,21 @@ const replyToComment = e => {
   replyingTo = parentComment.dataset.id;
   replyingMessage.style.display = 'flex';
   replyingMessage.querySelector('.parent-user').textContent = parentUser;
+
+  cancelReplyButton.addEventListener('click', e => {
+    e.preventDefault();
+    cancelReply(e);
+  })
+
+  const cancelReply = e => {
+    e.preventDefault();
+    isReply = false;
+    replyingTo = null;
+    replyingMessage.style.display = 'none';
+  }
+
+  return parentComment;
+
 }
 
 const replyButtons = document.querySelectorAll('.reply');
