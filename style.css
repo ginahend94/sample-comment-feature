@@ -63,7 +63,7 @@ header {
   width:100%;
   box-shadow:0 2px 5px rgba(var(--secondary-color-rgb), .3);
 }
-header > a:hover {
+header .container > a:hover {
   text-decoration:none;
 }
 header menu {
